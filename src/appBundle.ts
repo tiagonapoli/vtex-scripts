@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import program from 'commander'
 import fs from 'fs'
+import { ensureDirSync } from 'fs-extra'
 import path from 'path'
 import request from 'request'
 import { pipeline } from 'stream'
@@ -17,6 +18,7 @@ program
   .option('-p, --app <appName>', 'App name')
 
 program.parse(process.argv)
+ensureDirSync(program.dir)
 
 console.log(
   `Download bundle ${chalk.blue.bold(`${program.account}/${program.workspace}/${program.app}`)} ==> ${program.dir}`
