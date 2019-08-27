@@ -1,0 +1,38 @@
+{
+  "name": "vtex-scripts",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rm -rf build && yarn tsc",
+    "prepare": "yarn build",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "format": "prettier --config ./prettier.config.js --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "preversion": "yarn lint && yarn format",
+    "version": "git add --all",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "Tiago Nápoli <napoli.tiago96@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/request": "^2.48.2",
+    "axios": "^0.19.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.0",
+    "request": "^2.88.0",
+    "tar-fs": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^12.6.9",
+    "@types/tar-fs": "^1.16.1",
+    "jest": "^24.7.1",
+    "nodemon": "^1.19.0",
+    "prettier": "^1.17.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  }
+}
