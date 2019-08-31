@@ -636,10 +636,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@vtex/api@^3.46.0":
-  version "3.46.0"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.46.0.tgz#f43a58ce15e08dfa366daf44a4c2ec4928527236"
-  integrity sha512-Dqlu/LE6mn1oUIb744bjj+RgNbb+xMSB0C6H6RcUvVGOQPJgY4OfqNY11jae6qjInWXIVVyBkRKFwnFpUNqfxA==
+"@vtex/api@^3.47.1":
+  version "3.47.1"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-3.47.1.tgz#ea7e106b7ee49b89aa0d97f3aaa248592e865da1"
+  integrity sha512-tcOdjlMRz1MmWEInlWI8ZxcZY+qiPcgPWjmDh5wer8gt05/g72H3/iSWoiTuwPPa4+vLG0SrQrBjzGp2W5DUQg==
   dependencies:
     "@types/koa" "^2.0.48"
     "@types/koa-compose" "^3.2.3"
@@ -4527,7 +4527,7 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-"stats-lite@github:vtex/node-stats-lite#dist":
+stats-lite@vtex/node-stats-lite#dist:
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:
