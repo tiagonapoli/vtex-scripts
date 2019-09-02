@@ -32,13 +32,16 @@ resolveAppId(program.app).then(appID => {
     } ${chalk.blue.bold(`${program.account}/${program.workspace}/${appID}`)} ==> ${program.dir}`
   )
 
-  const suffix = program.old ? `/_types` : `/@types/${program.appName}`
+  const appName = appID.split('@')[0]
+  const suffix = program.old ? `/_types` : `/@types/${appName}`
   const base = program.linked
     ? `https://${program.workspace}--${program.account}.myvtex.com/_v/private/typings/linked/v1/${appID}/public`
     : `http://vtex.vteximg.com.br/_v/public/typings/v1/${appID}/public`
 
   const url = base + suffix
   const req = request.get(url, { headers: { Authorization: VtexConfig.token } })
+
+  console.log(url)
 
   req.on('response', async res => {
     const filename = `types_${program.linked ? 'linked' : 'unlinked'}_${program.old ? 'old' : 'new'}_${appID}.tar.gz`
