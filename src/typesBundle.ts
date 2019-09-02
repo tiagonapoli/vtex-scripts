@@ -40,8 +40,6 @@ resolveAppId(program.app).then(appID => {
   const url = base + suffix
   const req = request.get(url, { headers: { Authorization: VtexConfig.token } })
 
-  console.log(url)
-
   req.on('response', async res => {
     const filename = `types_${program.linked ? 'linked' : 'unlinked'}_${program.old ? 'old' : 'new'}_${appID}.tar.gz`
     console.log(`Starting ${chalk.bold.blue(filename)}...`)
