@@ -5,7 +5,7 @@ import { ensureDirSync } from 'fs-extra'
 import path from 'path'
 import request from 'request'
 import { pipeline } from 'stream'
-import tar from 'tar-fs'
+import tar from 'tar'
 import util from 'util'
 import zlib from 'zlib'
 import { VtexConfig } from './VtexConfig'
@@ -36,8 +36,9 @@ req.on('response', async res => {
   const fileWithoutExtension = filename.split('.')[0] + '.' + filename.split('.')[1]
   if (program.extract && res.headers['content-type'].includes('gzip')) {
     console.log('Downloading and extracting...')
-    const unzip = zlib.createUnzip()
-    await util.promisify(pipeline)([res, unzip, tar.extract(path.join(program.dir, fileWithoutExtension))])
+    const extractPath = path.join(program.dir, fileWithoutExtension)
+    ensureDirSync(extractPath)
+    await util.promisify(pipeline)([res, tar.extract({ cwd: extractPath + '/' })])
   } else {
     console.log('Downloading...')
     res.pipe(fs.createWriteStream(path.join(program.dir, filename)))

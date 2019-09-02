@@ -5,9 +5,8 @@ import { ensureDirSync } from 'fs-extra'
 import path from 'path'
 import request from 'request'
 import { pipeline } from 'stream'
-import tar from 'tar-fs'
+import tar from 'tar'
 import util from 'util'
-import zlib from 'zlib'
 import { createClients } from './clients'
 import { VtexConfig } from './VtexConfig'
 
@@ -33,13 +32,15 @@ resolveAppId(program.app).then(appID => {
     } ${chalk.blue.bold(`${program.account}/${program.workspace}/${appID}`)} ==> ${program.dir}`
   )
 
-  const suffix = program.old ? `/_types/react` : `/@types/vtex.render-runtime`
+  const suffix = program.old ? `/_types` : `/@types/${program.appName}`
   const base = program.linked
     ? `https://${program.workspace}--${program.account}.myvtex.com/_v/private/typings/linked/v1/${appID}/public`
     : `http://vtex.vteximg.com.br/_v/public/typings/v1/${appID}/public`
 
   const url = base + suffix
   const req = request.get(url, { headers: { Authorization: VtexConfig.token } })
+
+  console.log(url)
 
   req.on('response', async res => {
     const filename = `types_${program.linked ? 'linked' : 'unlinked'}_${program.old ? 'old' : 'new'}_${appID}.tar.gz`
@@ -48,9 +49,13 @@ resolveAppId(program.app).then(appID => {
     const fileWithoutExtension = filename.replace('.tar.gz', '')
     if (program.extract) {
       console.log('Downloading and extracting...')
-      const unzip = zlib.createUnzip()
+      const ee = tar.list()
+      ee.on('entry', data => console.log(data.path))
       ensureDirSync(path.join(program.dir, fileWithoutExtension))
-      await util.promisify(pipeline)([res, unzip, tar.extract(path.join(program.dir, fileWithoutExtension))])
+      const extractPath = path.join(program.dir, fileWithoutExtension)
+      const pipeline1 = util.promisify(pipeline)([res, ee])
+      await util.promisify(pipeline)([res, tar.extract({ cwd: extractPath + '/' })])
+      await pipeline1
     } else {
       console.log('Downloading...')
       res.pipe(fs.createWriteStream(path.join(program.dir, filename)))
