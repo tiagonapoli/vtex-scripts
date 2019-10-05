@@ -9,6 +9,7 @@ export const dummyLogger = ({
   workspace: '',
   operationId: '',
   requestId: '',
+  platform: '',
   debug: noop,
   info: noop,
   warn: noop,

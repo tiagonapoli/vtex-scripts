@@ -1,5 +1,5 @@
-import { Logger } from '@vtex/api/lib/service/logger'
 import { IOContext } from '@vtex/api'
+import { Logger } from '@vtex/api/lib/service/logger'
 
 const noop = () => {
   return
@@ -23,10 +23,11 @@ export const context = (account: string, workspace: string, token: string, regio
   return {
     account,
     workspace,
+    region,
     authToken: token,
     production: false,
     product: '',
-    region,
+    platform: '',
     route: {
       id: '',
       params: {},

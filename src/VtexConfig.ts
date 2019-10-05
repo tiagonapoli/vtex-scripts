@@ -18,4 +18,8 @@ export class VtexConfig {
   static get account() {
     return this.config.account
   }
+
+  static get region() {
+    return 'aws-us-east-1'
+  }
 }
