@@ -1,6 +1,6 @@
 {
   "name": "@tiagonapoli/vtex-scripts",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "bin": {
     "vtex-get": "./build/src/cli.js"
   },
