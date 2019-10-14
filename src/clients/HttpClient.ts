@@ -25,7 +25,7 @@ export class HttpClient {
       },
     })
 
-    this.http.interceptors.request.use((req) => {
+    this.http.interceptors.request.use(req => {
       console.debug(`${req.method.toUpperCase()} to ${chalk.bold.blue(req.baseURL + req.url)}`)
       console.debug(`${chalk.bold(`Headers`)}`, req.headers)
       console.debug(`${chalk.bold(`Timeout`)}`, req.timeout)
