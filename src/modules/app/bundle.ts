@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import chalk from 'chalk'
 import { ensureDirSync } from 'fs-extra'
 import { join } from 'path'
@@ -35,6 +36,7 @@ export default async (app: string, opts: Arguments) => {
     ensureDirSync(extractPath)
     return await util.promisify(pipeline)([res.data, tar.extract({ cwd: extractPath + '/' })])
   } catch (err) {
-    console.log(err.statusCode, err.statusMessage)
+    const axiosErr: AxiosError = err
+    console.log(axiosErr.response.status, axiosErr.response.statusText)
   }
 }
