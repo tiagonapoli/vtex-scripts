@@ -7,8 +7,8 @@
     "noImplicitAny": false,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "sourceMap": true,
-    "outDir": "build"
+    "outDir": "build",
+    "inlineSourceMap": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "src/__tests__"]
