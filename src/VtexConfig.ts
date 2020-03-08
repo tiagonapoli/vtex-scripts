@@ -4,8 +4,17 @@ import path from 'path'
 
 const vtexConfigPath = path.join(os.homedir(), '.config', 'configstore', 'vtex.json')
 
+const getConfig = (confPath: string) => {
+  try {
+    return JSON.parse(fs.readFileSync(confPath, { encoding: 'utf8' }))
+  } catch(err) {
+    console.log(err)
+    return {}
+  }
+}
+
 export class VtexConfig {
-  private static config = JSON.parse(fs.readFileSync(vtexConfigPath, { encoding: 'utf8' }))
+  private static config = getConfig(vtexConfigPath) 
 
   static get token() {
     return this.config.token

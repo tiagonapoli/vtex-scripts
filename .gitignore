@@ -1,5 +1,6 @@
 .vscode
 .eslintcache
+oclif.manifest.json
 coverage
 node_modules
 /build
