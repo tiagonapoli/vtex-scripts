@@ -1,6 +1,9 @@
 {
-  "ignore": ["**/*.test.ts", ".git", "node_modules"],
-  "watch": ["src"],
-  "exec": "yarn start",
-  "ext": "ts"
+  "ignore": ["**/*.test.ts", ".git", "node_modules", "lib"],
+  "watch": ["src", "package.json"],
+  "exec": "yarn build",
+  "ext": "ts",
+  "events": {
+    "crash": "yarn notify -t 'toolbelt: dev-watch' -m 'build failed'"
+  }
 }

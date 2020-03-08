@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
+    "types": ["node", "jest"],
+    "target": "esnext",
+    "lib": ["esnext"],
     "module": "commonjs",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "target": "es6",
     "noImplicitAny": false,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "outDir": "build",
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "incremental": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "src/__tests__"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts", "**/__tests__"]
 }

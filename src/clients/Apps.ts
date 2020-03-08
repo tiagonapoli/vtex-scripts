@@ -93,7 +93,7 @@ export class Apps {
   //     })
   //   }
 
-  public getAppBundle = (app: string, bundlePath: string = '') => {
+  public getAppBundle = (app: string, bundlePath = '') => {
     const locator = parseAppId(app)
     return this.http.getStreamRaw(this.routes.AppBundle(locator, bundlePath), {
       headers: {

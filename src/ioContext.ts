@@ -1,9 +1,7 @@
 import { IOContext } from '@vtex/api'
 import { Logger } from '@vtex/api/lib/service/logger'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 const dummyLogger = (account: string, workspace: string) => {
   return ({

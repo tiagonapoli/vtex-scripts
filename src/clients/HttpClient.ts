@@ -11,9 +11,11 @@ interface ClientOptions {
 
 export class HttpClient {
   protected http: AxiosInstance
+  private baseURL: string
 
   constructor(options: ClientOptions) {
     const { authToken, baseURL, timeout, headers, params } = options
+    this.baseURL = baseURL
     this.http = axios.create({
       baseURL,
       params,
@@ -34,8 +36,7 @@ export class HttpClient {
   }
 
   private buildFullURL = (path: string) => {
-    // @ts-ignore
-    return this.http.baseURL + path
+    return this.baseURL + path
   }
 
   public get = <T = any>(url: string, config: AxiosRequestConfig = {}): Promise<T> => {

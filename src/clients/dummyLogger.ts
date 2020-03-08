@@ -1,8 +1,6 @@
 import { Logger } from '@vtex/api/lib/service/logger'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 export const dummyLogger = ({
   account: '',
