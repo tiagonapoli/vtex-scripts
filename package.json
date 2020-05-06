@@ -13,7 +13,7 @@
   },
   "scripts": {
     "exe": "node scripts/make-executable.js",
-    "docs": "yarn oclif-dev readme --spaceSep",
+    "docs": "yarn oclif-dev readme",
     "watch": "bash ./scripts/symlink.sh && yarn build-clean && yarn nodemon",
     "format": "prettier --config ./.prettierrc --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint ./src --cache --ext .ts --config .eslintrc",
