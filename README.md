@@ -17,7 +17,7 @@ $ npm install -g @tiagonapoli/vtex-scripts
 $ vtex-dev COMMAND
 running command...
 $ vtex-dev (-v|--version|version)
-@tiagonapoli/vtex-scripts/0.0.2 linux-x64 node-v12.16.1
+@tiagonapoli/vtex-scripts/0.0.7 linux-x64 node-v12.16.2
 $ vtex-dev --help [COMMAND]
 USAGE
   $ vtex-dev COMMAND
@@ -26,38 +26,42 @@ USAGE
 <!-- usagestop -->
 
 <!-- commands -->
-* [`vtex-dev app bundle`](#vtex-dev-app-bundle)
-* [`vtex-dev app types`](#vtex-dev-app-types)
+* [`vtex-dev app:bundle APPID`](#vtex-dev-appbundle-appid)
+* [`vtex-dev app:types APPID`](#vtex-dev-apptypes-appid)
 * [`vtex-dev help [COMMAND]`](#vtex-dev-help-command)
 
-## `vtex-dev app bundle`
+## `vtex-dev app:bundle APPID`
 
 Download app bundle
 
 ```
 USAGE
-  $ vtex-dev app bundle
+  $ vtex-dev app:bundle APPID
 
 OPTIONS
-  -a, --app-id=app-id  (required) App ID
-  -d, --dir=dir        [default: .] Directory to save
-  -h, --help           show CLI help
-  -l, --linked         App is linked
+  -d, --dir=dir  [default: .] Directory to save
+  -h, --help     show CLI help
+  -l, --linked   App is linked
+
+EXAMPLES
+  vtex-dev app:bundle vtex.builder-hub@0.x
+  vtex-dev app:bundle vtex.builder-hub@0.200.1
+  vtex-dev app:bundle vtex.builder-hub@0.200.1-beta
+  vtex-dev app:bundle vtex.render-server@8.x --linked
 ```
 
-## `vtex-dev app types`
+## `vtex-dev app:types APPID`
 
 Download app types
 
 ```
 USAGE
-  $ vtex-dev app types
+  $ vtex-dev app:types APPID
 
 OPTIONS
-  -a, --app-id=app-id  (required) App ID
-  -d, --dir=dir        [default: .] Directory to save
-  -h, --help           show CLI help
-  -l, --linked         App is linked
+  -d, --dir=dir  [default: .] Directory to save
+  -h, --help     show CLI help
+  -l, --linked   App is linked
 ```
 
 ## `vtex-dev help [COMMAND]`
