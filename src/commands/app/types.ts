@@ -18,14 +18,17 @@ export default class AppTypes extends CustomCommand {
 
   static flags = {
     help: oclifFlags.help({ char: 'h' }),
-    'app-id': oclifFlags.string({ char: 'a', description: 'App ID', required: true }),
     dir: oclifFlags.string({ char: 'd', description: 'Directory to save', default: '.' }),
     linked: oclifFlags.boolean({ char: 'l', description: 'App is linked', default: false }),
   }
 
+  static args = [{ name: 'appId', required: true }]
+
   async run() {
-    const { flags } = this.parse(AppTypes)
-    const { dir, linked, 'app-id': app } = flags
+    const { flags, args } = this.parse(AppTypes)
+    const { dir, linked } = flags
+    const { appId: app } = args
+
     const apps = new Apps(createContext(VtexConfig), { timeout: 30000 })
     const appName = linked ? await apps.getApp(app).then(res => res.id) : app
 

@@ -14,18 +14,26 @@ import { VtexConfig } from '../../VtexConfig'
 export default class AppBundle extends CustomCommand {
   static description = 'Download app bundle'
 
-  static examples = []
+  static examples = [
+    'vtex-dev app:bundle vtex.builder-hub@0.x',
+    'vtex-dev app:bundle vtex.builder-hub@0.200.1',
+    'vtex-dev app:bundle vtex.builder-hub@0.200.1-beta',
+    'vtex-dev app:bundle vtex.render-server@8.x --linked',
+  ]
 
   static flags = {
     help: oclifFlags.help({ char: 'h' }),
-    'app-id': oclifFlags.string({ char: 'a', description: 'App ID', required: true }),
     dir: oclifFlags.string({ char: 'd', description: 'Directory to save', default: '.' }),
     linked: oclifFlags.boolean({ char: 'l', description: 'App is linked', default: false }),
   }
 
+  static args = [{ name: 'appId', required: true }]
+
   async run() {
-    const { flags } = this.parse(AppBundle)
-    const { dir, linked, 'app-id': app } = flags
+    const { flags, args } = this.parse(AppBundle)
+    const { dir, linked } = flags
+    const { appId: app } = args
+
     const apps = new Apps(createContext(VtexConfig), { timeout: 30000 })
     const appName = linked ? await apps.getApp(app).then(res => res.id) : app
     console.log(
