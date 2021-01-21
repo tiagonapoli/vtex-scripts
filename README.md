@@ -17,7 +17,7 @@ $ npm install -g @tiagonapoli/vtex-scripts
 $ vtex-dev COMMAND
 running command...
 $ vtex-dev (-v|--version|version)
-@tiagonapoli/vtex-scripts/0.0.7 linux-x64 node-v12.16.2
+@tiagonapoli/vtex-scripts/0.0.7 darwin-x64 node-v12.18.0
 $ vtex-dev --help [COMMAND]
 USAGE
   $ vtex-dev COMMAND
@@ -27,6 +27,7 @@ USAGE
 
 <!-- commands -->
 * [`vtex-dev app:bundle APPID`](#vtex-dev-appbundle-appid)
+* [`vtex-dev app:imageToMedia [WORKSPACE]`](#vtex-dev-appimagetomedia-workspace)
 * [`vtex-dev app:types APPID`](#vtex-dev-apptypes-appid)
 * [`vtex-dev help [COMMAND]`](#vtex-dev-help-command)
 
@@ -48,6 +49,23 @@ EXAMPLES
   vtex-dev app:bundle vtex.builder-hub@0.200.1
   vtex-dev app:bundle vtex.builder-hub@0.200.1-beta
   vtex-dev app:bundle vtex.render-server@8.x --linked
+```
+
+## `vtex-dev app:imageToMedia [WORKSPACE]`
+
+Migrate image content to media content
+
+```
+USAGE
+  $ vtex-dev app:imageToMedia [WORKSPACE]
+
+OPTIONS
+  -h, --help      show CLI help
+  -o, --override  Override existing media content if an image with the same treePath can be migrated
+
+EXAMPLES
+  vtex-dev workspace:migrateToImage
+  vtex-dev workspace:migrateToImage "myworkspace"
 ```
 
 ## `vtex-dev app:types APPID`
