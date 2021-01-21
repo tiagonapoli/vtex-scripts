@@ -53,4 +53,9 @@ export class HttpClient {
     console.debug(`GET stream from ${this.buildFullURL(url)}`)
     return this.http.get(url, { ...config, responseType: 'stream' })
   }
+
+  public putRaw = <T = any>(url: string, data?: any, config: AxiosRequestConfig = {}): Promise<T> => {
+    console.debug(`PUT to ${this.buildFullURL(url)}`)
+    return this.http.put(url, data, config)
+  }
 }
