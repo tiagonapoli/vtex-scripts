@@ -48,7 +48,7 @@ export default class AppBundle extends CustomCommand {
       console.log('Downloading and extracting...')
       const extractPath = join(dir, filename)
       ensureDirSync(extractPath)
-      return await util.promisify(pipeline)([res.data, tar.extract({ cwd: extractPath + '/' })])
+      return await util.promisify(pipeline)(res.data, tar.extract({ cwd: extractPath + '/' }))
     } catch (err) {
       const axiosErr: AxiosError = err
       console.log(axiosErr.response.status, axiosErr.response.statusText)
